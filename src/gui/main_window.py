@@ -76,6 +76,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.gestaltPageBtn.hide()
         self.ui.euEnablerPageBtn.hide()
         self.ui.featureFlagsPageBtn.hide()
+        self.ui.statusBarPageBtn.hide()
+        self.ui.statusBarPage.hide()
         self.ui.springboardOptionsPageBtn.hide()
         self.ui.internalOptionsPageBtn.hide()
         self.ui.daemonsPageBtn.hide()
@@ -92,7 +94,6 @@ class MainWindow(QtWidgets.QMainWindow):
             Page.Gestalt: Pages.MobileGestalt(window=self, ui=self.ui),
             Page.EUEnabler: Pages.Eligibility(window=self, ui=self.ui),
             Page.FeatureFlags: Pages.FeatureFlags(ui=self.ui),
-            Page.StatusBar: Pages.StatusBar(ui=self.ui),
             Page.Springboard: Pages.Springboard(ui=self.ui),
             Page.InternalOptions: Pages.Internal(ui=self.ui),
             Page.LiquidGlass: Pages.LiquidGlass(ui=self.ui),
@@ -126,7 +127,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.gestaltPageBtn.clicked.connect(self.on_gestaltPageBtn_clicked)
         self.ui.featureFlagsPageBtn.clicked.connect(self.on_featureFlagsPageBtn_clicked)
         self.ui.euEnablerPageBtn.clicked.connect(self.on_euEnablerPageBtn_clicked)
-        self.ui.statusBarPageBtn.clicked.connect(self.on_statusBarPageBtn_clicked)
         self.ui.springboardOptionsPageBtn.clicked.connect(self.on_springboardOptionsPageBtn_clicked)
         self.ui.internalOptionsPageBtn.clicked.connect(self.on_internalOptionsPageBtn_clicked)
         self.ui.liquidGlassPageBtn.clicked.connect(self.on_liquidGlassPageBtn_clicked)
@@ -230,7 +230,7 @@ class MainWindow(QtWidgets.QMainWindow):
             
             # show all pages
             self.ui.sidebarDiv1.show()
-            self.ui.statusBarPageBtn.show()
+            self.ui.statusBarPageBtn.hide()
             self.ui.springboardOptionsPageBtn.show()
             self.ui.internalOptionsPageBtn.show()
             self.ui.daemonsPageBtn.show()
@@ -503,11 +503,6 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_euEnablerPageBtn_clicked(self):
         self.pages[Page.EUEnabler].load()
         self.ui.pages.setCurrentIndex(Page.EUEnabler.value)
-
-    def on_statusBarPageBtn_clicked(self):
-        self.pages[Page.StatusBar].load()
-        self.ui.sbScrollArea.verticalScrollBar().setValue(0) # reset scroll to top
-        self.ui.pages.setCurrentIndex(Page.StatusBar.value)
 
     def on_springboardOptionsPageBtn_clicked(self):
         self.pages[Page.Springboard].load()
