@@ -34,7 +34,7 @@ keywords_to_hide = [
 
 # 额外图标按钮可能没有文本，用 objectName 或 variable name 隐藏
 object_names_to_hide = [
-    "discordBtn", "starOnGithubBtn", "twitterBtn", "githubBtn", "dollarBtn","duyBtn"
+    "discordBtn", "starOnGithubBtn", "twitterBtn", "githubBtn", "dollarBtn", "duyBtn"
 ]
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -71,6 +71,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.leminBtn.hide
         self.ui.leminGithubBtn.hide()
         self.ui.leminKoFiBtn.hide()
+        self.ui.duyBtn.hide()
         self.ui.posterboardPageBtn.hide()
         self.ui.templatePageBtn.hide()
         self.ui.gestaltPageBtn.hide()

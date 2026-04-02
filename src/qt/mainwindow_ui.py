@@ -6061,8 +6061,8 @@ class Ui_Nugget(object):
         self.toolButton_15.setText(QCoreApplication.translate("Nugget", u"Additional Thanks", None))
         self.translatorsBtn.setText(QCoreApplication.translate("Nugget", u"Translators", None))
         self.libiBtn.setText(QCoreApplication.translate("Nugget", u"pymobiledevice3", None))
-        self.duyBtn.setText(QCoreApplication.translate("Nugget", u"Duy Tran\n"
-"bl_sbx", None))
+        self.duyBtn.setText(QCoreApplication.translate("Nugget", u"Duy Transsss\n"
+"bl1", None))
         self.jjtechBtn.setText(QCoreApplication.translate("Nugget", u"JJTech\n"
 "Sparserestore", None))
         self.qtBtn.setText(QCoreApplication.translate("Nugget", u"Qt Creator", None))
