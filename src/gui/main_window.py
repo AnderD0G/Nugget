@@ -3,7 +3,7 @@ import plistlib
 import os
 from typing import Optional
 
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 import src.gui.pages as Pages
 
 from src.controllers.web_request_handler import is_update_available
@@ -43,7 +43,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.device_manager = device_manager
         self.translator = translator
         self.settings = self.translator.settings
-        self.ui = Ui_Nugget()
+        self.ui = Ui_BigBao()
         self.ui.setupUi(self)
         for attr_name in dir(self.ui):
             try:

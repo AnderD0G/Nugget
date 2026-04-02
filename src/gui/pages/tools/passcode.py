@@ -1,13 +1,13 @@
 import webbrowser
 
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 from PySide6 import QtWidgets
 
 from src.tweaks.tweaks import tweaks, TweakID
 
 class PasscodePage(Page):
-    def __init__(self, window, ui: Ui_Nugget):
+    def __init__(self, window, ui: Ui_BigBao):
         super().__init__()
         self.window = window
         self.ui = ui

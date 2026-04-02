@@ -2,7 +2,7 @@ import os
 
 from ..page import Page
 from ..pages_list import Page as PageItem
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 from PySide6.QtWidgets import QMessageBox
 from PySide6.QtCore import QCoreApplication, QLocale
@@ -46,7 +46,7 @@ available_languages = {
 }
 
 class SettingsPage(Page):
-    def __init__(self, window, ui: Ui_Nugget):
+    def __init__(self, window, ui: Ui_BigBao):
         super().__init__()
         self.window = window
         self.ui = ui

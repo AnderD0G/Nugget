@@ -1,11 +1,11 @@
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 from src.tweaks.tweak_loader import load_eligibility
 from src.tweaks.tweaks import tweaks, TweakID
 
 class EligibilityPage(Page):
-    def __init__(self, window, ui: Ui_Nugget):
+    def __init__(self, window, ui: Ui_BigBao):
         super().__init__()
         self.window = window
         self.ui = ui

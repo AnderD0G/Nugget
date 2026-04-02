@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Nugget</class>
- <widget class="QMainWindow" name="Nugget">
+ <class>BigBao</class>
+ <widget class="QMainWindow" name="BigBao">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string notr="true">Nugget</string>
+   <string notr="true">BigBao</string>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -346,7 +346,7 @@ QSlider::tick:horizontal {
 }</string>
          </property>
          <property name="text">
-          <string notr="true">Nugget</string>
+          <string notr="true">BigBao</string>
          </property>
         </widget>
        </item>
@@ -1094,7 +1094,7 @@ QSlider::tick:horizontal {
 }</string>
                       </property>
                       <property name="text">
-                       <string notr="true">Nugget</string>
+                       <string notr="true">BigBao</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
@@ -1779,7 +1779,7 @@ QToolButton:pressed {
               <item>
                <widget class="QLabel" name="appVersionLbl">
                 <property name="text">
-                 <string extracomment="Leave %VERSION %BETATAG the same">Nugget GUI - Version %VERSION %BETATAG</string>
+                 <string extracomment="Leave %VERSION %BETATAG the same">BigBao GUI - Version %VERSION %BETATAG</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -10979,7 +10979,7 @@ Warning: Disabling will cause the battery to show &quot;Unknown Part&quot; or &q
                        </font>
                       </property>
                       <property name="text">
-                       <string>Nugget Settings</string>
+                       <string>BigBao Settings</string>
                       </property>
                      </widget>
                     </item>

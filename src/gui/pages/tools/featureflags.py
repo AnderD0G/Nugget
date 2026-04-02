@@ -1,11 +1,11 @@
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 from src.tweaks.tweak_loader import load_featureflags
 from src.tweaks.tweaks import tweaks, TweakID
 
 class FeatureFlagsPage(Page):
-    def __init__(self, ui: Ui_Nugget):
+    def __init__(self, ui: Ui_BigBao):
         super().__init__()
         self.ui = ui
 

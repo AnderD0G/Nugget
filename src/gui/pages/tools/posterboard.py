@@ -8,14 +8,14 @@ from shutil import make_archive, rmtree
 from PySide6 import QtCore, QtWidgets, QtGui
 
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 from src.gui.dialogs import PBHelpDialog
 from src.gui.custom_qt_elements.multicombobox import MultiComboBox
 
 from src.tweaks.tweaks import tweaks, TweakID
 
 class PosterboardPage(Page, QtCore.QObject):
-    def __init__(self, window, ui: Ui_Nugget):
+    def __init__(self, window, ui: Ui_BigBao):
         super().__init__()
         self.window = window
         self.ui = ui

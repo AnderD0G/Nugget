@@ -2,12 +2,12 @@ import webbrowser
 from PySide6.QtCore import QCoreApplication
 
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 from src.devicemanagement.constants import Version
 
 class HomePage(Page):
-    def __init__(self, window, ui: Ui_Nugget):
+    def __init__(self, window, ui: Ui_BigBao):
         super().__init__()
         self.window = window
         self.ui = ui

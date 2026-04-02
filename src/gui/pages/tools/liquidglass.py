@@ -1,11 +1,11 @@
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 from src.tweaks.tweak_loader import load_liquidglass
 from src.tweaks.tweaks import TweakID
 
 class LiquidGlassPage(Page):
-    def __init__(self, ui: Ui_Nugget):
+    def __init__(self, ui: Ui_BigBao):
         super().__init__()
         self.ui = ui
 

@@ -1,11 +1,11 @@
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 from src.tweaks.tweaks import tweaks, TweakID
 from src.tweaks.status_bar.status_setter import StatusBarItem
 
 class StatusBarPage(Page):
-    def __init__(self, ui: Ui_Nugget):
+    def __init__(self, ui: Ui_BigBao):
         super().__init__()
         self.ui = ui
         self.status_manager = tweaks[TweakID.StatusBar]

@@ -1,14 +1,14 @@
 from PySide6 import QtCore, QtWidgets, QtGui
 
 from ..page import Page
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 from src.tweaks.tweak_loader import load_mobilegestalt
 from src.tweaks.tweaks import tweaks, TweakID
 from src.tweaks.custom_gestalt_tweaks import CustomGestaltTweaks, ValueTypeStrings
 
 class GestaltPage(Page):
-    def __init__(self, window, ui: Ui_Nugget):
+    def __init__(self, window, ui: Ui_BigBao):
         super().__init__()
         self.window = window
         self.ui = ui

@@ -4,7 +4,7 @@ import sys
 from PySide6.QtCore import QTranslator, QLibraryInfo, QLocale, QSettings
 from PySide6.QtWidgets import QApplication
 
-from src.qt.mainwindow_ui import Ui_Nugget
+from src.qt.mainwindow_ui import Ui_BigBao
 
 class Translator:
     def __init__(self, app: QApplication, settings: QSettings):
@@ -29,10 +29,10 @@ class Translator:
             self.app.installTranslator(translator)
         translator = QTranslator(self.app)
         path = ':/translations'
-        if translator.load(QLocale(), 'translations/Nugget', '_', path):
+        if translator.load(QLocale(), 'translations/BigBao', '_', path):
             self.app.installTranslator(translator)
 
-    def fix_ui_for_rtl(self, ui: Ui_Nugget):
+    def fix_ui_for_rtl(self, ui: Ui_BigBao):
         curr_locale = self.get_saved_locale_code()
         if curr_locale == "ar" or curr_locale == "ar_SA" or curr_locale == "ar_EG":
             # need to correct for stuff
