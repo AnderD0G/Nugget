@@ -34,7 +34,7 @@ keywords_to_hide = [
 
 # 额外图标按钮可能没有文本，用 objectName 或 variable name 隐藏
 object_names_to_hide = [
-    "discordBtn", "starOnGithubBtn", "twitterBtn", "githubBtn", "dollarBtn"
+    "discordBtn", "starOnGithubBtn", "twitterBtn", "githubBtn", "dollarBtn","duyBtn"
 ]
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -87,7 +87,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.applyPageBtn.hide()
         self.ui.sidebarDiv1.hide()
         self.ui.sidebarDiv2.hide()
-
+       
         # pre-load the pages
         self.pages = {
             Page.Home: Pages.Home(window=self, ui=self.ui),
@@ -217,7 +217,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.sidebarDiv2.hide()
             self.ui.applyPageBtn.hide()
             self.ui.jjtechBtn.hide()
-            self.ui.duyBtn.show()
+            self.ui.duyBtn.hide()
 
             self.ui.resetPairBtn.hide()
             self.ui.pocketPosterHelperBtn.hide()

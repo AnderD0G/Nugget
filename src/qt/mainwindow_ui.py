@@ -938,7 +938,7 @@ class Ui_Nugget(object):
         self.horizontalLayout_24.addWidget(self.libiBtn)
 
         self.duyBtn = QToolButton(self.horizontalWidget)
-        self.duyBtn.setObjectName(u"duyBtn")
+        self.duyBtn.setObjectName(u"sssssssss")
         self.duyBtn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.duyBtn.setStyleSheet(u"QToolButton {\n"
 "	border-radius: 0px;\n"

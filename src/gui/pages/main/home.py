@@ -109,4 +109,4 @@ class HomePage(Page):
     def on_githubBtn_clicked(self):
         webbrowser.open_new_tab("https://github.com/leminlimez/Nugget")
     def on_bigNuggetBtn_clicked(self):
-        webbrowser.open_new_tab("https://cowabun.ga")
+        webbrowser.open_new_tab("https://www.4399.com")
