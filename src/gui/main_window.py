@@ -72,6 +72,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.leminGithubBtn.hide()
         self.ui.leminKoFiBtn.hide()
         self.ui.posterboardPageBtn.hide()
+        self.ui.templatesPageBtn.hide()
+        self.ui.templatesPage.hide()
         self.ui.templatePageBtn.hide()
         self.ui.gestaltPageBtn.hide()
         self.ui.euEnablerPageBtn.hide()
@@ -83,6 +85,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.daemonsPageBtn.hide()
         self.ui.passcodePageBtn.hide()
         self.ui.advancedPageBtn.hide()
+        self.ui.miscOptionsBtn.hide()
         self.ui.applyPageBtn.hide()
         self.ui.sidebarDiv1.hide()
         self.ui.sidebarDiv2.hide()
@@ -98,7 +101,6 @@ class MainWindow(QtWidgets.QMainWindow):
             Page.InternalOptions: Pages.Internal(ui=self.ui),
             Page.LiquidGlass: Pages.LiquidGlass(ui=self.ui),
             Page.Daemons: Pages.Daemons(ui=self.ui),
-            Page.Templates: Pages.Templates(window=self, ui=self.ui),
             Page.Passcode: Pages.Passcode(window=self, ui=self.ui),
             Page.RiskyTweaks: Pages.Risky(ui=self.ui),
             Page.Settings: Pages.Settings(window=self, ui=self.ui)
@@ -132,9 +134,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.liquidGlassPageBtn.clicked.connect(self.on_liquidGlassPageBtn_clicked)
         self.ui.daemonsPageBtn.clicked.connect(self.on_daemonsPageBtn_clicked)
         self.ui.posterboardPageBtn.clicked.connect(self.on_posterboardPageBtn_clicked)
-        self.ui.templatesPageBtn.clicked.connect(self.on_templatesPageBtn_clicked)
         self.ui.advancedPageBtn.clicked.connect(self.on_advancedPageBtn_clicked)
-        self.ui.miscOptionsBtn.clicked.connect(self.on_miscOptionsBtn_clicked)
         self.ui.applyPageBtn.clicked.connect(self.on_applyPageBtn_clicked)
         self.ui.settingsPageBtn.clicked.connect(self.on_settingsPageBtn_clicked)
 
@@ -401,11 +401,6 @@ class MainWindow(QtWidgets.QMainWindow):
                     self.ui.pages.setCurrentIndex(Page.Posterboard.value)
                     self.ui.posterboardPageBtn.setChecked(True)
                     self.ui.homePageBtn.setChecked(False)
-                elif len(tweaks[TweakID.Templates].templates) > 0:
-                    self.pages[Page.Templates].load()
-                    self.ui.pages.setCurrentIndex(Page.Templates.value)
-                    self.ui.templatePageBtn.setChecked(True)
-                    self.ui.homePageBtn.setChecked(False)
 
             # hide posterboard on iOS 26.4b3+ (unless using an iPhone 17 series phone)
             # lazy hiding method that has a lot of issues, but will probably get it working again
@@ -524,10 +519,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.pages[Page.Posterboard].load()
         self.ui.pages.setCurrentIndex(Page.Posterboard.value)
 
-    def on_templatesPageBtn_clicked(self):
-        self.pages[Page.Templates].load()
-        self.ui.pages.setCurrentIndex(Page.Templates.value)
-
     def on_passcodePageBtn_clicked(self):
         self.pages[Page.Passcode].load()
         self.ui.pages.setCurrentIndex(Page.Passcode.value)
@@ -535,9 +526,6 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_advancedPageBtn_clicked(self):
         self.pages[Page.RiskyTweaks].load()
         self.ui.pages.setCurrentIndex(Page.RiskyTweaks.value)
-
-    def on_miscOptionsBtn_clicked(self):
-        self.ui.pages.setCurrentIndex(Page.MiscOptions.value)
 
     def on_applyPageBtn_clicked(self):
         self.ui.pages.setCurrentIndex(Page.Apply.value)
