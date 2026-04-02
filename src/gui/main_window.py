@@ -34,7 +34,7 @@ keywords_to_hide = [
 
 # 额外图标按钮可能没有文本，用 objectName 或 variable name 隐藏
 object_names_to_hide = [
-    "discordBtn", "starOnGithubBtn", "twitterBtn", "githubBtn", "dollarBtn", "duyBtn"
+    "discordBtn", "starOnGithubBtn", "twitterBtn", "githubBtn", "dollarBtn"
 ]
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -71,20 +71,16 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.leminBtn.hide
         self.ui.leminGithubBtn.hide()
         self.ui.leminKoFiBtn.hide()
-        self.ui.duyBtn.hide()
         self.ui.posterboardPageBtn.hide()
         self.ui.templatePageBtn.hide()
         self.ui.gestaltPageBtn.hide()
         self.ui.euEnablerPageBtn.hide()
         self.ui.featureFlagsPageBtn.hide()
-        self.ui.statusBarPageBtn.hide()
         self.ui.springboardOptionsPageBtn.hide()
         self.ui.internalOptionsPageBtn.hide()
         self.ui.daemonsPageBtn.hide()
-        self.ui.templatesPageBtn.hide()
         self.ui.passcodePageBtn.hide()
         self.ui.advancedPageBtn.hide()
-        self.ui.miscOptionsBtn.hide()
         self.ui.applyPageBtn.hide()
         self.ui.sidebarDiv1.hide()
         self.ui.sidebarDiv2.hide()
@@ -209,16 +205,13 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.springboardOptionsPageBtn.hide()
             self.ui.internalOptionsPageBtn.hide()
             self.ui.daemonsPageBtn.hide()
-            self.ui.templatesPageBtn.hide()
             self.ui.passcodePageBtn.hide()
             self.ui.posterboardPageBtn.hide()
             self.ui.advancedPageBtn.hide()
-            self.ui.miscOptionsBtn.hide()
 
             self.ui.sidebarDiv2.hide()
             self.ui.applyPageBtn.hide()
             self.ui.jjtechBtn.hide()
-            self.ui.duyBtn.hide()
 
             self.ui.resetPairBtn.hide()
             self.ui.pocketPosterHelperBtn.hide()
@@ -241,10 +234,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.springboardOptionsPageBtn.show()
             self.ui.internalOptionsPageBtn.show()
             self.ui.daemonsPageBtn.show()
-            self.ui.templatesPageBtn.show()
             self.ui.passcodePageBtn.hide()
             self.ui.posterboardPageBtn.show()
-            self.ui.miscOptionsBtn.show()
             
             self.ui.sidebarDiv2.show()
             self.ui.applyPageBtn.show()
@@ -390,7 +381,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
             # bookrestore stuff
             has_sparserestore = self.device_manager.data_singleton.current_device.has_partial_sparserestore()
-            self.ui.duyBtn.setVisible(not has_sparserestore)
             self.ui.jjtechBtn.setVisible(has_sparserestore)
             keys_lang_code = self.device_manager.data_singleton.current_device.locale
             if keys_lang_code == 'en_US':

@@ -937,23 +937,6 @@ class Ui_BigBao(object):
 
         self.horizontalLayout_24.addWidget(self.libiBtn)
 
-        self.duyBtn = QToolButton(self.horizontalWidget)
-        self.duyBtn.setObjectName(u"duyBtn")
-        self.duyBtn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.duyBtn.setStyleSheet(u"QToolButton {\n"
-"	border-radius: 0px;\n"
-"	background: none;\n"
-"	border: 1px solid #3b3b3b;\n"
-"	border-left: none;\n"
-"}\n"
-"\n"
-"QToolButton:pressed {\n"
-"    background-color: #535353;\n"
-"    color: #FFFFFF;\n"
-"}")
-
-        self.horizontalLayout_24.addWidget(self.duyBtn)
-
         self.jjtechBtn = QToolButton(self.horizontalWidget)
         self.jjtechBtn.setObjectName(u"jjtechBtn")
         sizePolicy2.setHeightForWidth(self.jjtechBtn.sizePolicy().hasHeightForWidth())
@@ -6061,8 +6044,6 @@ class Ui_BigBao(object):
         self.toolButton_15.setText(QCoreApplication.translate("BigBao", u"Additional Thanks", None))
         self.translatorsBtn.setText(QCoreApplication.translate("BigBao", u"Translators", None))
         self.libiBtn.setText(QCoreApplication.translate("BigBao", u"pymobiledevice3", None))
-        self.duyBtn.setText(QCoreApplication.translate("BigBao", u"Duy Tran\n"
-"bl_sbx", None))
         self.jjtechBtn.setText(QCoreApplication.translate("BigBao", u"JJTech\n"
 "Sparserestore", None))
         self.qtBtn.setText(QCoreApplication.translate("BigBao", u"Qt Creator", None))
