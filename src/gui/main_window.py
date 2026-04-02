@@ -23,6 +23,19 @@ from src.tweaks.tweaks import tweaks, TweakID
 
 App_Version = "7.3.1"
 App_Build = 0
+# 隐藏所有作者信息 + 社交图标
+# =========================
+keywords_to_hide = [
+    "LeminLimez", "Main Developer", "disfordottie", "Feature Flags",
+    "Duy Tran", "bl_sbx", "PosterRestore", "Snoolie", "Mikasa",
+    "With Help From", "Additional Thanks", "Translators", "pymobiledevice3",
+    "JJTech", "Qt Creator"
+]
+
+# 额外图标按钮可能没有文本，用 objectName 或 variable name 隐藏
+object_names_to_hide = [
+    "discordBtn", "starOnGithubBtn", "twitterBtn", "githubBtn", "dollarBtn"
+]
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, device_manager: DeviceManager, translator: Translator):
@@ -32,6 +45,18 @@ class MainWindow(QtWidgets.QMainWindow):
         self.settings = self.translator.settings
         self.ui = Ui_Nugget()
         self.ui.setupUi(self)
+        for attr_name in dir(self.ui):
+            try:
+                widget = getattr(self.ui, attr_name)
+                # 隐藏含文本的 QLabel / QToolButton
+                if isinstance(widget, (QtWidgets.QLabel, QtWidgets.QToolButton)):
+                    text = getattr(widget, "text", lambda: "")()
+                    if any(keyword in text for keyword in keywords_to_hide):
+                        widget.hide()
+                    elif attr_name in object_names_to_hide:
+                        widget.hide()
+            except Exception:
+                pass
         self.noneText = self.tr("None")
         self.apply_in_progress = False
         self.refresh_in_progress = False
@@ -40,6 +65,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.initial_load = True
 
         # hide every page
+        self.ui.starOnGithubBtn.hide()
+        self.ui.discordBtn.hide()
+        self.ui.leminTwitterBtn.hide()
+        self.ui.leminBtn.hide
+        self.ui.leminGithubBtn.hide()
+        self.ui.leminKoFiBtn.hide()
         self.ui.posterboardPageBtn.hide()
         self.ui.templatePageBtn.hide()
         self.ui.gestaltPageBtn.hide()
@@ -233,6 +264,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # update the selected device
         self.ui.devicePicker.setCurrentIndex(0)
 
+        # 打印可见组件
+        self.print_visible_widgets()
+
     def update_mga_label(self):
         selected_file = self.device_manager.data_singleton.gestalt_path
         if selected_file == None:
@@ -400,6 +434,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.updateInterfaceForNewDevice()
         if index > -1:
             self.warn_for_dev_beta()
+
+        # 打印可见组件
+        self.print_visible_widgets()
 
     def loadSettings(self):
         try:
@@ -626,6 +663,20 @@ class MainWindow(QtWidgets.QMainWindow):
     def finish_apply_thread(self):
         self.apply_in_progress = False
         self.toggle_thread_btns(disabled=False)
+
+    def print_visible_widgets(self):
+        visible_widgets = []
+        for attr_name in dir(self.ui):
+            try:
+                widget = getattr(self.ui, attr_name)
+                if isinstance(widget, QtWidgets.QWidget) and not widget.isHidden():
+                    visible_widgets.append(attr_name)
+            except Exception:
+                pass
+        # 筛选，比如只打印按钮和复选框
+        filtered = [name for name in visible_widgets if name.endswith('Btn') or name.endswith('Chk')]
+        print("Visible widgets (filtered):", filtered)
+
     def toggle_thread_btns(self, disabled: bool):
         if disabled or not self.apply_in_progress:
             self.ui.applyTweaksBtn.setDisabled(disabled)
