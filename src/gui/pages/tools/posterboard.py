@@ -1,4 +1,3 @@
-import webbrowser
 import subprocess
 import os
 import uuid
@@ -318,7 +317,7 @@ class PosterboardPage(Page, QtCore.QObject):
                 detailsBox.exec()
 
     def on_findPBBtn_clicked(self):
-        webbrowser.open_new_tab("https://cowabun.ga/wallpapers")
+        return
 
     def on_pbHelpBtn_clicked(self):
         dialog = PBHelpDialog()
