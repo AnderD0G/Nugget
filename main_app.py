@@ -4,6 +4,7 @@ import multiprocessing
 import runpy
 import warnings
 import traceback
+from datetime import datetime
 
 # 1. SILENCE WARNINGS
 warnings.filterwarnings("ignore")
@@ -15,6 +16,43 @@ from src.controllers.translator import Translator
 from src.gui.main_window import MainWindow
 from src.devicemanagement.device_manager import DeviceManager
 from src.tweaks.tweaks import tweaks, TweakID
+
+
+def _write_crash_log(prefix: str, exc_text: str) -> str:
+    """Write crash info to a predictable location for packaged builds."""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"nugget_{prefix}_{timestamp}.log"
+
+    candidates = []
+    try:
+        candidates.append(os.path.dirname(sys.executable))
+    except Exception:
+        pass
+    candidates.append(os.getcwd())
+    candidates.append(os.path.expanduser("~"))
+
+    for folder in candidates:
+        try:
+            os.makedirs(folder, exist_ok=True)
+            path = os.path.join(folder, filename)
+            with open(path, "w", encoding="utf-8") as fp:
+                fp.write(exc_text)
+            return path
+        except Exception:
+            continue
+
+    return ""
+
+
+def _global_excepthook(exc_type, exc_value, exc_tb):
+    exc_text = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
+    log_path = _write_crash_log("fatal", exc_text)
+    sys.stderr.write(exc_text)
+    if log_path:
+        sys.stderr.write(f"\nCrash log written to: {log_path}\n")
+
+
+sys.excepthook = _global_excepthook
 
 if __name__ == "__main__":
     multiprocessing.freeze_support()
@@ -56,28 +94,44 @@ if __name__ == "__main__":
 
     # 3. GUI STARTUP
     print("Starting Nugget...")
-    
-    app = QtWidgets.QApplication([])
-    dm = DeviceManager()
 
-    settings = QSettings("Nugget", "settings")
-    translator = Translator(app, settings)
-    translator.set_default_locale(translator.get_saved_locale_code())
-    translator.load_translations()
+    try:
+        app = QtWidgets.QApplication([])
+        dm = DeviceManager()
 
-    icon_path = os.path.join(getattr(sys, "_MEIPASS", os.path.dirname(__file__)), "nugget.ico")
-    app.setWindowIcon(QtGui.QIcon(icon_path))
+        settings = QSettings("Nugget", "settings")
+        translator = Translator(app, settings)
+        translator.set_default_locale(translator.get_saved_locale_code())
+        translator.load_translations()
 
-    widget = MainWindow(device_manager=dm, translator=translator)
-    translator.fix_ui_for_rtl(widget.ui)
-    widget.resize(800, 600)
-    widget.show()
+        icon_path = os.path.join(getattr(sys, "_MEIPASS", os.path.dirname(__file__)), "nugget.ico")
+        app.setWindowIcon(QtGui.QIcon(icon_path))
 
-    for arg in sys.argv:
-        if arg.endswith('.tendies'):
-            tweaks[TweakID.PosterBoard].add_tendie(arg)
-        elif arg.endswith('.batter'):
-            tweaks[TweakID.Templates].add_template(arg)
+        widget = MainWindow(device_manager=dm, translator=translator)
+        translator.fix_ui_for_rtl(widget.ui)
+        widget.resize(800, 600)
+        widget.show()
 
-    print("Nugget launched.")
-    sys.exit(app.exec())
+        for arg in sys.argv:
+            if arg.endswith('.tendies'):
+                tweaks[TweakID.PosterBoard].add_tendie(arg)
+            elif arg.endswith('.batter'):
+                tweaks[TweakID.Templates].add_template(arg)
+
+        print("Nugget launched.")
+        sys.exit(app.exec())
+    except Exception:
+        exc_text = traceback.format_exc()
+        log_path = _write_crash_log("startup", exc_text)
+        try:
+            QtWidgets.QMessageBox.critical(
+                None,
+                "Nugget Startup Error",
+                f"Nugget failed to start.\n\nA crash log was saved to:\n{log_path if log_path else 'unable to save log'}"
+            )
+        except Exception:
+            pass
+        print(exc_text)
+        if log_path:
+            print(f"Crash log written to: {log_path}")
+        sys.exit(1)
