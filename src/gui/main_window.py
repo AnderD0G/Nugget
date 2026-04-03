@@ -70,7 +70,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.leminTwitterBtn.hide()
         self.ui.leminBtn.hide
         self.ui.leminGithubBtn.hide()
-        self.ui.leminKoFiBtn.hide()
+        self.ui.leminKoFiBtn.show()
         self.ui.posterboardPageBtn.hide()
         self.ui.templatesPageBtn.hide()
         self.ui.templatesPage.hide()
