@@ -23,6 +23,7 @@ args = [
     "--hidden-import=zeroconf._handlers.answers",
     "--hidden-import=inquirer",
     "--hidden-import=readchar",
+    "--hidden-import=pyuac",
     "--copy-metadata=readchar",
 ]
 
