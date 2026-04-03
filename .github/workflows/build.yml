@@ -46,10 +46,24 @@ jobs:
           source .env/bin/activate
           python3 compile.py
 
+      - name: Create DMG (Intel)
+        run: |
+          hdiutil create \
+            -volname "Nugget" \
+            -srcfolder dist/Nugget.app \
+            -ov -format UDZO \
+            dist/Nugget_macOS_intel.dmg
+
       - name: Zip Nugget.app (Intel)
         run: |
           cd dist
           zip -r -y "Nugget_macOS_intel.zip" Nugget.app
+
+      - name: Upload DMG (Intel)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nugget_macOS_intel_dmg
+          path: dist/Nugget_macOS_intel.dmg
 
       - name: Upload ZIP (Intel)
         uses: actions/upload-artifact@v4
@@ -90,10 +104,24 @@ jobs:
           source .env/bin/activate
           python3 compile.py
 
+      - name: Create DMG (ARM)
+        run: |
+          hdiutil create \
+            -volname "Nugget" \
+            -srcfolder dist/Nugget.app \
+            -ov -format UDZO \
+            dist/Nugget_macOS_arm.dmg
+
       - name: Zip Nugget.app (ARM)
         run: |
           cd dist
           zip -r -y "Nugget_macOS_arm.zip" Nugget.app
+
+      - name: Upload DMG (ARM)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nugget_macOS_arm_dmg
+          path: dist/Nugget_macOS_arm.dmg
 
       - name: Upload ZIP (ARM)
         uses: actions/upload-artifact@v4
