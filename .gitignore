@@ -12,3 +12,5 @@ __pycache__
 /.vscode
 *.dll
 Nugget.dmg
+build_exe.log
+
