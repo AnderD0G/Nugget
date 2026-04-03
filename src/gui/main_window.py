@@ -649,7 +649,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 pass
         # 筛选，比如只打印按钮和复选框
         filtered = [name for name in visible_widgets if name.endswith('Btn') or name.endswith('Chk')]
-        print("Visible widgets (filtered):", filtered)
+        # print("Visible widgets (filtered):", filtered)
 
     def toggle_thread_btns(self, disabled: bool):
         if disabled or not self.apply_in_progress:
