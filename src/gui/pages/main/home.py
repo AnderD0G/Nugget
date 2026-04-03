@@ -17,6 +17,11 @@ class HomePage(Page):
         ## HOME PAGE ACTIONS
         self.ui.phoneVersionLbl.linkActivated.connect(self.toggle_version_label)
 
+        # Keep only the donation entry exposed and add a tribute note for the main developer.
+        self.ui.toolButton_14.setText(
+            QCoreApplication.tr("Tribute to the main developer. If you would like to support the project, you can donate via the button on the left.")
+        )
+
         ## HOME PAGE LINKS
         self.ui.bigNuggetBtn.clicked.connect(self.on_bigNuggetBtn_clicked)
         self.ui.starOnGithubBtn.clicked.connect(self.on_githubBtn_clicked)

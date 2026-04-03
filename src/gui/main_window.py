@@ -50,6 +50,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 widget = getattr(self.ui, attr_name)
                 # 隐藏含文本的 QLabel / QToolButton
                 if isinstance(widget, (QtWidgets.QLabel, QtWidgets.QToolButton)):
+                    if attr_name == "toolButton_14":
+                        continue
                     text = getattr(widget, "text", lambda: "")()
                     if any(keyword in text for keyword in keywords_to_hide):
                         widget.hide()
@@ -71,6 +73,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.leminBtn.hide
         self.ui.leminGithubBtn.hide()
         self.ui.leminKoFiBtn.show()
+        self.ui.toolButton_14.show()
         self.ui.posterboardPageBtn.hide()
         self.ui.templatesPageBtn.hide()
         self.ui.templatesPage.hide()
