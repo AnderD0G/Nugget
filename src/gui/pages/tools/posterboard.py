@@ -180,11 +180,6 @@ class PosterboardPage(Page, QtCore.QObject):
         self.ui.tendiesPageBtn.setChecked(False)
         self.ui.templatePageBtn.setChecked(True)
         self.ui.pbPages.setCurrentIndex(1)
-    def on_videoPageBtn_clicked(self):
-        self.ui.tendiesPageBtn.setChecked(False)
-        self.ui.templatePageBtn.setChecked(False)
-        self.ui.videoPageBtn.setChecked(True)
-        self.ui.pbPages.setCurrentIndex(2)
     
     # Tendies Page
     def on_importTendiesBtn_clicked(self):
