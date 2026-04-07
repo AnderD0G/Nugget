@@ -41,14 +41,14 @@ jobs:
       - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
-          name: Nugget-Windows-EXE-${{ github.ref_name }}
-          path: dist/NuggetOnefile.exe
+          name: BigBao-Windows-EXE-${{ github.ref_name }}
+          path: dist/BigBao.exe
 
       - name: Upload build logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: Nugget-Windows-build-logs-${{ github.ref_name }}
+          name: BigBao-Windows-build-logs-${{ github.ref_name }}
           path: |
             build/**
             *.spec

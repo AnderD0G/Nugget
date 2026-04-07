@@ -21,7 +21,7 @@ from src.tweaks.tweaks import tweaks, TweakID
 def _write_crash_log(prefix: str, exc_text: str) -> str:
     """Write crash info to a predictable location for packaged builds."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"nugget_{prefix}_{timestamp}.log"
+    filename = f"bigbao_{prefix}_{timestamp}.log"
 
     candidates = []
     try:
@@ -93,7 +93,7 @@ if __name__ == "__main__":
             sys.exit()
 
     # 3. GUI STARTUP
-    print("Starting Nugget...")
+    print("Starting BigBao...")
 
     try:
         app = QtWidgets.QApplication([])
@@ -118,7 +118,8 @@ if __name__ == "__main__":
             elif arg.endswith('.batter'):
                 tweaks[TweakID.Templates].add_template(arg)
 
-        print("Nugget launched.")
+        print("BigBao launched.")
+        print("作者微信:BigBao301，加我好友，免费领壁纸")
         sys.exit(app.exec())
     except Exception:
         exc_text = traceback.format_exc()
@@ -126,8 +127,8 @@ if __name__ == "__main__":
         try:
             QtWidgets.QMessageBox.critical(
                 None,
-                "Nugget Startup Error",
-                f"Nugget failed to start.\n\nA crash log was saved to:\n{log_path if log_path else 'unable to save log'}"
+                "BigBao Startup Error",
+                f"BigBao failed to start.\n\nA crash log was saved to:\n{log_path if log_path else 'unable to save log'}"
             )
         except Exception:
             pass

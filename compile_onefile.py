@@ -10,7 +10,7 @@ if target_arch:
 # Base PyInstaller args (onefile build)
 args = [
     "main_app.py",
-    "--name=NuggetOnefile",
+    "--name=BigBao",
     "--icon=nugget.ico",
     "--onefile",
     "--noconfirm",
