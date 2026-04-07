@@ -34,6 +34,9 @@ class PosterboardPage(Page, QtCore.QObject):
         self.ui.resetPBDrp.lineEdit().setText(self.ui.resetPBDrp.noneText)
         self.ui.resetPBDrp.setStyleSheet("QWidget { background-color: #3b3b3b; border: 2px solid #3b3b3b; border-radius: 5px; }")# QAbstractItemView::indicator:checked { background-color: rgba(0, 0, 255, 0.3); border-radius: 4px; }")
         self.ui.pbPagePicker.layout().addWidget(self.ui.resetPBDrp)
+        self.ui.pbPages.removeWidget(self.ui.pbVideoPage)
+        self.ui.pbVideoPage.hide()
+        self.ui.videoPageBtn.hide()
         self.ui.pbVideoThumbLbl.setText(QtCore.QCoreApplication.tr("Current Thumbnail: {0}").format(self.window.noneText))
         self.ui.pbVideoLbl.setText(QtCore.QCoreApplication.tr("Current Video: {0}").format(self.window.noneText))
 
@@ -43,20 +46,10 @@ class PosterboardPage(Page, QtCore.QObject):
     def load_page(self):
         self.ui.tendiesPageBtn.clicked.connect(self.on_tendiesPageBtn_clicked)
         self.ui.templatePageBtn.clicked.connect(self.on_templatePageBtn_clicked)
-        self.ui.videoPageBtn.clicked.connect(self.on_videoPageBtn_clicked)
 
         self.ui.importTendiesBtn.clicked.connect(self.on_importTendiesBtn_clicked)
 
         self.ui.importTemplateBtn.clicked.connect(self.on_importTemplatesBtn_clicked)
-
-        self.ui.chooseThumbBtn.clicked.connect(self.on_chooseThumbBtn_clicked)
-        self.ui.chooseVideoBtn.clicked.connect(self.on_chooseVideoBtn_clicked)
-
-        self.ui.caVideoChk.toggled.connect(self.on_caVideoChk_toggled)
-        self.ui.reverseLoopChk.toggled.connect(self.on_reverseLoopChk_toggled)
-        self.ui.useForegroundChk.toggled.connect(self.on_useForegroundChk_toggled)
-        self.ui.calcModeDrp.activated.connect(self.on_calcModeDrp_activated)
-        self.ui.exportPBVideoBtn.clicked.connect(self.on_exportPBVideoBtn_clicked)
         
         self.ui.findPBBtn.clicked.connect(self.on_findPBBtn_clicked)
         self.ui.pbHelpBtn.clicked.connect(self.on_pbHelpBtn_clicked)
@@ -182,12 +175,10 @@ class PosterboardPage(Page, QtCore.QObject):
     def on_tendiesPageBtn_clicked(self):
         self.ui.tendiesPageBtn.setChecked(True)
         self.ui.templatePageBtn.setChecked(False)
-        self.ui.videoPageBtn.setChecked(False)
         self.ui.pbPages.setCurrentIndex(0)
     def on_templatePageBtn_clicked(self):
         self.ui.tendiesPageBtn.setChecked(False)
         self.ui.templatePageBtn.setChecked(True)
-        self.ui.videoPageBtn.setChecked(False)
         self.ui.pbPages.setCurrentIndex(1)
     def on_videoPageBtn_clicked(self):
         self.ui.tendiesPageBtn.setChecked(False)
